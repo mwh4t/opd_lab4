@@ -26,24 +26,33 @@ namespace opd_lab4_1
 
             for (double x = x1; x <= x2; x += x3)
             {
-                if (x % 2 == 0 && x > 0)
+                double y = x * x - 9;
+                if (y % 2 == 0 && y > 0)
                 {
-                    sum += x;
+                    sum += y;
                     evenPositiveCount++;
                 }
             }
 
-            double average = sum / evenPositiveCount;
-
-            for (double x = x1; x <= x2; x += x3)
+            if (evenPositiveCount == 0)
             {
-                if (x > average)
-                {
-                    count++;
-                }
+                Console.WriteLine("Нет значений :(");
             }
+            else
+            {
+                double average = sum / evenPositiveCount;
 
-            Console.WriteLine("Количество значений функции, превышающих среднее арифметическое чётных положительных значений: " + count);
+                for (double x = x1; x <= x2; x += x3)
+                {
+                    double y = x * x - 9;
+                    if (y > average)
+                    {
+                        count++;
+                    }
+                }
+
+                Console.WriteLine("Количество значений функции, превышающих среднее арифметическое чётных положительных значений: " + count);
+            }
         }
     }
 }
